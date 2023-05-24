@@ -6,8 +6,8 @@ namespace CJSBugTracker.Models
     {
         public int Id { get; set; }
         public int TicketId { get; set; }
-        public string PropertyName { get; set; }
-        public string Description { get; set; }
+        public string? PropertyName { get; set; }
+        public string? Description { get; set; }
         public DateTime Created  { get; set; }
 
         public string? OldValue { get; set; }
