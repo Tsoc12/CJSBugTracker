@@ -1,0 +1,39 @@
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CJSBugTracker.Models
+{
+    public class Company
+    {
+
+        public int Id { get; set; }
+
+        [Required]
+        [Display(Name = "Name")]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} and max {1} characters longs.", MinimumLength = 2)]
+        public string? Name { get; set; }
+
+
+        [Required]
+        [Display(Name = "Description ")]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} and max {1} characters longs.", MinimumLength = 2)]
+        public string? Description { get; set; }
+
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
+
+        public byte[]? ImageData { get; set; }
+
+        public string? ImageType { get; set; }
+
+      
+        
+       
+        public virtual ICollection<Project> Projects { get; set; } = new HashSet<Project>();
+
+        public virtual BTUser? Members { get; set; }
+
+        public virtual ICollection<Invite> Invites { get; set; } = new HashSet<Invite>();
+
+    }
+}
