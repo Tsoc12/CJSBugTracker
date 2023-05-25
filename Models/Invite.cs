@@ -48,9 +48,9 @@ namespace CJSBugTracker.Models
 
         //public virtual Invitor Invitor { get; set; }
         //public virtual Invitee Invitee { get; set; }
-        public virtual BTUser? Invitors { get; set; }
+        public virtual BTUser? Invitor { get; set; }
 
-        public virtual BTUser? Invitees { get; set; } 
+        public virtual BTUser? Invitee { get; set; } 
 
 
     }

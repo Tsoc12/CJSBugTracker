@@ -40,8 +40,8 @@ namespace CJSBugTracker.Models
         public virtual Project? Project { get; set; }
         //public virtual Sender Sender { get; set; }
         //public virtual Recipient Recipient { get; set; }
-        public virtual BTUser? Recipients { get; set; }
-        public virtual BTUser? Senders { get; set; } 
+        public virtual BTUser? Recipient { get; set; }
+        public virtual BTUser? Sender { get; set; } 
 
     }
 }

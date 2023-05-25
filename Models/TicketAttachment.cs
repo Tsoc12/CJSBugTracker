@@ -20,11 +20,11 @@ namespace CJSBugTracker.Models
         public string? BTUserId { get; set; }
 
         [NotMapped]
-        public IFormFile? ImageFormFile { get; set; }
+        public IFormFile? FormFile { get; set; }
 
-        public byte[]? ImageFileData { get; set; }
+        public byte[]? FileData { get; set; }
 
-        public string? ImageFileType { get; set; }
+        public string? FileType { get; set; }
 
         public virtual Ticket? Ticket { get; set; }
         public virtual BTUser? BTUser { get; set; }

@@ -27,6 +27,8 @@ namespace CJSBugTracker.Models
 
         public string? ImageFileType { get; set; }
 
+        public int CompanyId { get; set; }
+
         public virtual Company? Company { get; set; }
      
         public virtual ICollection<Project> Projects { get; set; } = new HashSet<Project>();

@@ -31,7 +31,8 @@ namespace CJSBugTracker.Models
        
         public virtual ICollection<Project> Projects { get; set; } = new HashSet<Project>();
 
-        public virtual BTUser? Members { get; set; }
+       
+        public virtual ICollection<BTUser> Members { get; set; } = new HashSet<BTUser>();
 
         public virtual ICollection<Invite> Invites { get; set; } = new HashSet<Invite>();
 
