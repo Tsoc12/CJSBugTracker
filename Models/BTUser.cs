@@ -21,17 +21,14 @@ namespace CJSBugTracker.Models
 
         //Image properties
         [NotMapped]
-        public IFormFile? ImageFile { get; set; }
+        public IFormFile? ImageFormFile { get; set; }
 
-        public byte[]? ImageData { get; set; }
-        public string? ImageType { get; set; }
+        public byte[]? ImageFileData { get; set; }
 
-
+        public string? ImageFileType { get; set; }
 
         public virtual Company? Company { get; set; }
-       
-
-
+     
         public virtual ICollection<Project> Projects { get; set; } = new HashSet<Project>();
 
     }

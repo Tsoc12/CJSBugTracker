@@ -17,7 +17,7 @@ namespace CJSBugTracker.Models
 
         public int CompanyId { get; set; }
 
-        public int ProjectId { get; set; }
+        public int? ProjectId { get; set; }
         [Required]
         public string? InvitorId { get; set; }
 
@@ -48,10 +48,9 @@ namespace CJSBugTracker.Models
 
         //public virtual Invitor Invitor { get; set; }
         //public virtual Invitee Invitee { get; set; }
-        public virtual ICollection<BTUser> Invitors { get; set; } = new HashSet<BTUser>();
+        public virtual BTUser? Invitors { get; set; }
 
-        public virtual ICollection<BTUser> Invitees { get; set; } = new HashSet<BTUser>();
-
+        public virtual BTUser? Invitees { get; set; } 
 
 
     }

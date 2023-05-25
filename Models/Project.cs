@@ -9,12 +9,11 @@ namespace CJSBugTracker.Models
         public int CompanyId { get; set; }
 
         [Required]
-        [Display(Name = "Category Name")]
-        [StringLength(50, ErrorMessage = "The {0} must be at least {2} and max {1} characters longs.", MinimumLength = 2)]
+        [Display(Name = "Name")]
+        [StringLength(500, ErrorMessage = "The {0} must be at least {2} and max {1} characters longs.", MinimumLength = 2)]
         public string? Name { get; set;}
 
         [Required]
-        [StringLength(200, ErrorMessage = "The {0} must be at least {2} and max {1} characters longs.", MinimumLength = 2)]
         public string? Description { get; set;}
         
         [DataType(DataType.Date)]
@@ -26,18 +25,20 @@ namespace CJSBugTracker.Models
 
         public int ProjectPriorityId { get; set; }
 
-        public IFormFile? ImageFile { get; set; }
-
         [NotMapped]
-        public byte[]? ImageData { get; set; }
+        public IFormFile? ImageFormFile { get; set; }
 
-        public string? ImageType { get; set; }
+        public byte[]? ImageFileData { get; set; }
+
+        public string? ImageFileType { get; set; }
 
         public bool Archived { get; set; }
 
         public virtual Company? Company { get; set; }
         public virtual ProjectPriority? ProjectPriority { get; set; }
-        public virtual BTUser? Member { get; set; }
-        public virtual Ticket? Ticket { get; set; }
+       
+        public virtual ICollection<BTUser> Members { get; set; } = new HashSet<BTUser>();
+        public virtual ICollection<Ticket> Tickets { get; set; } = new HashSet<Ticket>();
+
     }
 }

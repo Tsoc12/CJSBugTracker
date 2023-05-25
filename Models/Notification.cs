@@ -23,11 +23,11 @@ namespace CJSBugTracker.Models
         public DateTime Created { get; set; }
 
         [Required]
-        [StringLength(200, ErrorMessage = "The{0} must be at least {2} and at most {1} characters", MinimumLength = 2)]
+       
         public string? SenderId { get; set; }
 
         [Required]
-        [StringLength(200, ErrorMessage = "The{0} must be at least {2} and at most {1} characters", MinimumLength = 2)]
+       
         public string? RecipientId { get; set; }
 
         public int NotificationTypeId { get; set; }
@@ -40,9 +40,8 @@ namespace CJSBugTracker.Models
         public virtual Project? Project { get; set; }
         //public virtual Sender Sender { get; set; }
         //public virtual Recipient Recipient { get; set; }
-        public virtual ICollection<BTUser> Recipients { get; set; } = new HashSet<BTUser>();
-        public virtual ICollection<BTUser> Senders { get; set; } = new HashSet<BTUser>();
-
+        public virtual BTUser? Recipients { get; set; }
+        public virtual BTUser? Senders { get; set; } 
 
     }
 }
