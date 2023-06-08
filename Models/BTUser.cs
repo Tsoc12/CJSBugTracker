@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using Azure;
+using Microsoft.AspNetCore.Identity;
 
 namespace CJSBugTracker.Models
 {
-    public class BTUser
+    public class BTUser : IdentityUser
     {
         [Required]
         [Display(Name = "First Name")]

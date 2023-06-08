@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CJSBugTracker.Extensions;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CJSBugTracker.Models
@@ -20,6 +22,10 @@ namespace CJSBugTracker.Models
         public string? BTUserId { get; set; }
 
         [NotMapped]
+        [DisplayName("Select a file")]
+        [DataType(DataType.Upload)]
+        [MaxFileSize(1024 * 1024)]
+        [AllowedExtensions(new string[] { ".jpg", ".png", ".doc", ".docx", ".xls", ".xlsx", ".pdf" })]
         public IFormFile? FormFile { get; set; }
 
         public byte[]? FileData { get; set; }

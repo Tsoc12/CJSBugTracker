@@ -24,6 +24,7 @@ namespace CJSBugTracker.Data
         public virtual DbSet<TicketPriority> TicketPriorities { get; set; } = default!;
         public virtual DbSet<TicketType> TicketTypes { get; set; } = default!;
         public virtual DbSet<TicketStatus> TicketStatuses { get; set; } = default!;
+        public DbSet<CJSBugTracker.Models.TicketHistory> TicketHistory { get; set; } = default!;
 
 
     }

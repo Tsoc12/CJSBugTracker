@@ -1,0 +1,90 @@
+﻿@model IEnumerable<CJSBugTracker.Models.Project>
+@using CJSBugTracker.Service.Interface;
+@using CJSBugTracker.Enums;
+
+@inject IBTFileService _fileService
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageFormFile)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Archived)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectPriority)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Project project in Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => project.Name)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => project.Description)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => project.Created)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => project.StartDate)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => project.EndDate)
+            </td>
+            <td>
+                    <img class="img-fluid border rounded-3 mb-2" style="max-height: 350px;" src="@_fileService.ConvertByteArrayToFile(project.ImageFileData!,project.ImageFileType!,DefaultImage.ProjectImage)" id="projectImage">
+
+
+            </td>
+            
+            <td>
+                    @Html.DisplayFor(modelItem => project.Archived)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => project.Company.Description)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => project.ProjectPriority.Name)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@project.Id">Edit</a>
+                    <a asp-action="Details" asp-route-id="@project.Id">Details</a>
+                    <a asp-action="Delete" asp-route-id="@project.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
