@@ -12,7 +12,7 @@ namespace CJSBugTracker.Service
     {
         private readonly ApplicationDbContext _context;
         private readonly IBTRolesService _rolesService;
-
+        
 
         public BTProjectService(ApplicationDbContext context, IBTRolesService rolesService)
         {
@@ -60,39 +60,77 @@ namespace CJSBugTracker.Service
 
         public async Task<List<BTUser>> GetProjectMembersByRoleAsync(int projectId, string roleName, int companyId)
         {
-            //try
-            //{
-            //    Project? project = await _context.Projects
-            //                                        .AsNoTracking()
-            //                                        .Include(p => p.Members)
-            //                                        .Include(p=>p.)
-            //                                        .FirstOrDefaultAsync(p => p.Id == projectId && p.CompanyId == companyId);
+            try
+            {
+                List<BTUser> members = new List<BTUser>();
 
-            //    if (project is not null)
-            //    {
-            //        foreach (BTUser member in project.Members)
-            //        {
-            //            if (await _rolesService.IsUserInRole(member, nameof(BTRoles.ProjectManager)))
-            //            {
-            //                return member;
-            //            }
-            //        }
-            //    }
+                Project? project = await _context.Projects
+                                                    .Include(p => p.Members)
+                                                    .FirstOrDefaultAsync(p => p.Id == projectId && p.CompanyId == companyId);
 
-            //    return null;
-            //}
-            //catch (Exception)
-            //{
+                if (project is not null)
+                {
+                    foreach (BTUser member in project.Members)
+                    {
+                        if (await _rolesService.IsUserInRole(member ,roleName))
+                        {
+                            members.Add(member);
+                        }
+                    }
+                }
 
-            //    throw;
-            //}
+                return members;
+            }
+            catch (Exception)
+            {
 
-            throw new NotImplementedException();
+                throw;
+            }
+
         }
 
-        public Task<List<Project>> GetUnassignedProjectsByCompanyIdAsync(int companyId)
+        public async Task<List<Project>> GetUnassignedProjectsByCompanyIdAsync(int companyId)
         {
-            throw new NotImplementedException();
+            try
+            {
+
+                //get all company projects
+                List<Project> projects = await _context.Projects.Where(p=>p.CompanyId == companyId).ToListAsync();
+
+                //check all that are unassigned 
+                             
+                //Make empty list of projects where we can add the unassigned projects
+
+                List<Project> unassignedProjects = new List<Project>();
+
+                // go through each of the project and check if there unassigned 
+                foreach (Project project in projects)
+                {
+                    //go through each member in project
+
+                    bool isUnassigned = true;
+
+                    foreach(BTUser member in project.Members)
+                    {
+                        // if unassigned is to project
+                        if (await _rolesService.IsUserInRole(member, nameof(BTRoles.ProjectManager)))
+                           {
+                            isUnassigned = false;
+                           }
+                    }
+                    if (isUnassigned == true)
+                    {
+                        unassignedProjects.Add(project);
+                    }
+                }
+                //return list of projects 
+                return unassignedProjects;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public Task<bool> RemoveMemberFromProjectAsync(BTUser member, int projectId, int companyId)

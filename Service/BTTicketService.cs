@@ -111,7 +111,6 @@ namespace CJSBugTracker.Service
                 throw;
             }
         }
-
         public async Task<List<TicketStatus>> GetTicketStatuses()
         {
             try
@@ -123,7 +122,6 @@ namespace CJSBugTracker.Service
                 throw;
             }
         }
-
         public async Task<List<TicketType>>GetTicketTypes()
         {
             try
