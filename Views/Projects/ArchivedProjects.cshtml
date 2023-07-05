@@ -1,0 +1,180 @@
+﻿@using CJSBugTracker.Service.Interface;
+
+
+@model IEnumerable<CJSBugTracker.Models.Project>
+
+
+
+@inject IBTFileService fileService
+
+@{
+    ViewData["Title"] = "ArchivedProject";
+}
+
+<!-- BEGIN: Weekly Top Products -->
+            <div class="g-col-12 mt-6">
+                <div class="intro-y d-block d-sm-flex align-items-center h-10">
+                    <h2 class="fs-lg fw-medium truncate me-5">
+                        Weekly Top Products
+                    </h2>
+                    <div class="d-flex align-items-center ms-sm-auto mt-3 mt-sm-0">
+                        <button class="btn box d-flex align-items-center text-gray-700 dark-text-gray-300"> <i data-feather="file-text" class="d-none d-sm-block w-4 h-4 me-2"></i> Export to Excel </button>
+                        <button class="ms-3 btn box d-flex align-items-center text-gray-700 dark-text-gray-300"> <i data-feather="file-text" class="d-none d-sm-block w-4 h-4 me-2"></i> Export to PDF </button>
+                    </div>
+                </div>
+                <div class="intro-y overflow-auto overflow-lg-visible mt-8 mt-sm-0">
+                    <table class="table table-report mt-sm-2">
+                        <thead>
+                            <tr>
+                                <th class="text-nowrap">IMAGES</th>
+                                <th class="text-nowrap">PROJECT NAME</th>
+                                <th class="text-center text-nowrap">TICKETS</th>
+                                <th class="text-center text-nowrap">STATUS</th>
+                                <th class="text-center text-nowrap">ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="intro-x">
+                                <td class="w-40">
+                                    <div class="d-flex">
+                                        <div class="w-10 h-10 image-fit zoom-in">
+                                            <img alt="Icewall Bootstrap HTML Admin Template" class="tooltip rounded-circle" src="dist/images/preview-1.jpg" title="Uploaded at 10 June 2021">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="" class="fw-medium text-nowrap">Apple MacBook Pro 13</a>
+                                    <div class="text-gray-600 fs-xs text-nowrap mt-0.5">PC &amp; Laptop</div>
+                                </td>
+                                <td class="text-center">125</td>
+                                <td class="w-40">
+                                    <div class="d-flex align-items-center justify-content-center text-theme-10"> <i data-feather="check-square" class="w-4 h-4 me-2"></i> Inactive </div>
+                                </td>
+                                <td class="table-report__action w-56">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <a class="d-flex align-items-center me-3" href=""> <i data-feather="check-square" class="w-4 h-4 me-1"></i> Edit </a>
+                                        <a class="d-flex align-items-center text-theme-24" href=""> <i data-feather="trash-2" class="w-4 h-4 me-1"></i> Delete </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="intro-x">
+                                <td class="w-40">
+                                    <div class="d-flex">
+                                        <div class="w-10 h-10 image-fit zoom-in">
+                                            <img alt="Icewall Bootstrap HTML Admin Template" class="tooltip rounded-circle" src="dist/images/preview-11.jpg" title="Uploaded at 26 January 2022">
+                                        </div>
+                                        <div class="w-10 h-10 image-fit zoom-in ms-n5">
+                                            <img alt="Icewall Bootstrap HTML Admin Template" class="tooltip rounded-circle" src="dist/images/preview-9.jpg" title="Uploaded at 5 August 2020">
+                                        </div>
+                                        <div class="w-10 h-10 image-fit zoom-in ms-n5">
+                                            <img alt="Icewall Bootstrap HTML Admin Template" class="tooltip rounded-circle" src="dist/images/preview-7.jpg" title="Uploaded at 19 January 2021">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="" class="fw-medium text-nowrap">Nike Tanjun</a>
+                                    <div class="text-gray-600 fs-xs text-nowrap mt-0.5">Sport &amp; Outdoor</div>
+                                </td>
+                                <td class="text-center">50</td>
+                                <td class="w-40">
+                                    <div class="d-flex align-items-center justify-content-center text-theme-24"> <i data-feather="check-square" class="w-4 h-4 me-2"></i> Active </div>
+                                </td>
+                                <td class="table-report__action w-56">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <a class="d-flex align-items-center me-3" href=""> <i data-feather="check-square" class="w-4 h-4 me-1"></i> Edit </a>
+                                        <a class="d-flex align-items-center text-theme-24" href=""> <i data-feather="trash-2" class="w-4 h-4 me-1"></i> Delete </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="intro-x">
+                                <td class="w-40">
+                                    <div class="d-flex">
+                                        <div class="w-10 h-10 image-fit zoom-in">
+                                            <img alt="Icewall Bootstrap HTML Admin Template" class="tooltip rounded-circle" src="dist/images/preview-10.jpg" title="Uploaded at 14 April 2021">
+                                        </div>
+                                        <div class="w-10 h-10 image-fit zoom-in ms-n5">
+                                            <img alt="Icewall Bootstrap HTML Admin Template" class="tooltip rounded-circle" src="dist/images/preview-12.jpg" title="Uploaded at 29 March 2021">
+                                        </div>
+                                        <div class="w-10 h-10 image-fit zoom-in ms-n5">
+                                            <img alt="Icewall Bootstrap HTML Admin Template" class="tooltip rounded-circle" src="dist/images/preview-5.jpg" title="Uploaded at 3 July 2021">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="" class="fw-medium text-nowrap">Oppo Find X2 Pro</a>
+                                    <div class="text-gray-600 fs-xs text-nowrap mt-0.5">Smartphone &amp; Tablet</div>
+                                </td>
+                                <td class="text-center">50</td>
+                                <td class="w-40">
+                                    <div class="d-flex align-items-center justify-content-center text-theme-24"> <i data-feather="check-square" class="w-4 h-4 me-2"></i> Active </div>
+                                </td>
+                                <td class="table-report__action w-56">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <a class="d-flex align-items-center me-3" href=""> <i data-feather="check-square" class="w-4 h-4 me-1"></i> Edit </a>
+                                        <a class="d-flex align-items-center text-theme-24" href=""> <i data-feather="trash-2" class="w-4 h-4 me-1"></i> Delete </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="intro-x">
+                                <td class="w-40">
+                                    <div class="d-flex">
+                                        <div class="w-10 h-10 image-fit zoom-in">
+                                            <img alt="Icewall Bootstrap HTML Admin Template" class="tooltip rounded-circle" src="dist/images/preview-5.jpg" title="Uploaded at 22 April 2022">
+                                        </div>
+                                        <div class="w-10 h-10 image-fit zoom-in ms-n5">
+                                            <img alt="Icewall Bootstrap HTML Admin Template" class="tooltip rounded-circle" src="dist/images/preview-5.jpg" title="Uploaded at 12 July 2021">
+                                        </div>
+                                        <div class="w-10 h-10 image-fit zoom-in ms-n5">
+                                            <img alt="Icewall Bootstrap HTML Admin Template" class="tooltip rounded-circle" src="dist/images/preview-11.jpg" title="Uploaded at 2 September 2020">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="" class="fw-medium text-nowrap">Samsung Galaxy S20 Ultra</a>
+                                    <div class="text-gray-600 fs-xs text-nowrap mt-0.5">Smartphone &amp; Tablet</div>
+                                </td>
+                                <td class="text-center">117</td>
+                                <td class="w-40">
+                                    <div class="d-flex align-items-center justify-content-center text-theme-24"> <i data-feather="check-square" class="w-4 h-4 me-2"></i> Active </div>
+                                </td>
+                                <td class="table-report__action w-56">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <a class="d-flex align-items-center me-3" href=""> <i data-feather="check-square" class="w-4 h-4 me-1"></i> Edit </a>
+                                        <a class="d-flex align-items-center text-theme-24" href=""> <i data-feather="trash-2" class="w-4 h-4 me-1"></i> Delete </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="intro-y d-flex flex-wrap flex-sm-row flex-sm-nowrap align-items-center mt-3">
+                    <nav class="w-full w-sm-auto me-sm-auto">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevrons-left"></i> </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-left"></i> </a>
+                            </li>
+                            <li class="page-item"> <a class="page-link" href="#">...</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">1</a> </li>
+                            <li class="page-item active"> <a class="page-link" href="#">2</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">3</a> </li>
+                            <li class="page-item"> <a class="page-link" href="#">...</a> </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevron-right"></i> </a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#"> <i class="w-4 h-4" data-feather="chevrons-right"></i> </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <select class="w-20 form-select box mt-3 mt-sm-0">
+                        <option>10</option>
+                        <option>25</option>
+                        <option>35</option>
+                        <option>50</option>
+                    </select>
+                </div>
+            </div>
+            <!-- END: Weekly Top Products -->

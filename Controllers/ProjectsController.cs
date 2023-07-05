@@ -47,6 +47,24 @@ namespace CJSBugTracker.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+
+        public async Task<IActionResult> ArchivedProjects()
+        {
+            BTUser? user = await _userManager.GetUserAsync(User);
+
+            var applicationDbContext = _context.Projects.Where(p => p.CompanyId == user.CompanyId)
+                                                        .Include(p => p.Company);                    
+            return View(await applicationDbContext.ToListAsync());
+
+        }
+
+
+
+
+
+
+
+
         // GET: Projects/Details/5
         public async Task<IActionResult> Details(int? id)
         {
